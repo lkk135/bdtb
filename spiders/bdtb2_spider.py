@@ -18,7 +18,7 @@ class Bdtb(Spider):
     start_urls = [
         'http://tieba.baidu.com/f/search/res?ie=utf-8'
     ]
-    conn = pymysql.connect(host='192.168.3.232', user='zwj', passwd='123456', db='caiji', charset='utf8',
+    conn = pymysql.connect(host='ip', user='zwj', passwd='123456', db='test', charset='utf8',
                            port=3306)
     cursor = conn.cursor()
     def Address(self, response):
@@ -49,7 +49,7 @@ class Bdtb(Spider):
                 else:
                     continue
                 # cjmc
-                cjmc = '百度贴吧搜索_%s' % (qw)
+                cjmc = qw
                 item['cjmc'] = cjmc
                 # 标题
                 Btitle = div.xpath('./span[@class="p_title"]')[i].xpath('string(.)').extract()
